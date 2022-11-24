@@ -8,7 +8,7 @@ type Props = {
 }
 
 export const CalendarHeader = (props: Props) => (
-    <div className="flex justify-between">
+    <div className="flex justify-between items-center">
         <div
             className="cursor-pointer"
             onClick={() => props.changeMonth?.(-1)}
