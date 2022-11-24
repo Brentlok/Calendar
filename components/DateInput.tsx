@@ -1,30 +1,50 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { DateType } from "~/types"
-import { formatDateInput } from "~/utils";
-import { dateToInput } from "~/utils/dateToInput";
+import { formatDateInput, dateToInput, inputToDate } from "~/utils";
 
 type Props = {
     date: DateType;
+    dateNum?: number;
+    setDate: (date: DateType) => void;
 }
 
 export const DateInput = (props: Props) => {
     const [value, setValue] = useState('');
 
     useEffect(() => {
-        setValue(dateToInput(props.date));
-    }, [props.date]);
-
-    useEffect(() => {
-        setValue('');
-    }, [props.date.month]);
-
-    const handleChange = (date: string) => {
-        if (date.length > 10) {
+        if (!props.dateNum) {
             return;
         }
 
-        setValue(formatDateInput(date));
+        setValue(dateToInput(props.date));
+    }, [props.dateNum, props.date]);
+
+    useEffect(() => {
+        if (value.length !== 10) {
+            return;
+        }
+
+        if (inputToDate(value).month === props.date.month) {
+            return;
+        }
+
+        setValue('');
+    }, [props.date.month, value]);
+
+    const handleChange = (val: string) => {
+        if (val.length > 10) {
+            return;
+        }
+
+        const date = formatDateInput(val);
+        setValue(date);
+
+        if (date.length !== 10) {
+            return;
+        }
+
+        props.setDate(inputToDate(date));
     }
 
     return (

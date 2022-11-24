@@ -7,6 +7,8 @@ type Props = {
     changeMonth?: (num: 1 | -1) => void;
     changeDate?: (num: number) => void;
     currentDate?: number;
+    maxYear?: number;
+    minYear?: number;
 }
 
 const DAYS_NAMES = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as const;
