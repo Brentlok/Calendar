@@ -1,1 +1,2 @@
-export * from './Calendar/Calendar';
+export * from './Calendar';
+export * from './DateInput'

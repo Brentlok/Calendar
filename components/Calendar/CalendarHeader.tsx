@@ -14,6 +14,7 @@ export const CalendarHeader = (props: Props) => (
             onClick={() => props.changeMonth?.(-1)}
         >
             <Image
+                className="w-auto h-auto"
                 src='/assets/arrow.svg'
                 alt=""
                 width={11}
@@ -30,6 +31,7 @@ export const CalendarHeader = (props: Props) => (
             onClick={() => props.changeMonth?.(1)}
         >
             <Image
+                className="w-auto h-auto"
                 src='/assets/arrow.svg'
                 alt=""
                 width={11}

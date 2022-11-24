@@ -33,12 +33,13 @@ export const Calendar = (props: Props) => {
         </div>
     ));
 
-    const fillStart = new Array(firstDay).fill(0).map((_, idx) => <div key={idx} className="calendar-cell" />);
+    const fillStart = new Array(firstDay)
+        .fill(0).map((_, idx) => <div key={idx} className="calendar-cell" />);
 
     const days = fillStart.concat(daysBase);
 
     return (
-        <div className="w-80 h-96 bg-red-500 rounded-2xl px-3 pt-4 pb-6">
+        <div className="w-80 h-96 rounded-2xl px-3 pt-4 pb-6 shadow-md">
             <CalendarHeader
                 date={date}
                 changeMonth={changeMonth}
