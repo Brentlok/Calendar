@@ -10,4 +10,12 @@ body {
     .h-page {
         height: 100vh;
     }
+
+    .calendar-cell {
+        @apply w-10 h-10 rounded-full grid place-items-center;
+    }
+
+    .calendar-cell[data-is-active='true'] {
+        @apply border-2;
+    }
 }

@@ -4,17 +4,23 @@ import { changeMonth, convertDate } from '~/utils';
 
 const Home = () => {
     const [date, setDate] = useState(convertDate(new Date()));
+    const [dateNum, setDateNum] = useState<number>();
 
-    const handleChangeMonth = (num: 1 | -1) => {
+    const handleMonthChange = (num: 1 | -1) => {
+        setDateNum(undefined);
         const newDate = changeMonth(date, num);
         setDate(newDate);
     }
+
+    const handleDateChange = (num: number) => setDateNum(num);
 
     return (
         <main className="w-full h-page grid place-items-center">
             <Calendar
                 date={date}
-                changeMonth={handleChangeMonth}
+                currentDate={dateNum}
+                changeMonth={handleMonthChange}
+                changeDate={handleDateChange}
             />
         </main>
     );
